@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UploadSection from './components/UploadSection';
 import Dashboard from './components/Dashboard';
+import axios from 'axios'; // ✅ IMPORTANT
 
 function App() {
   const [data, setData] = useState(null);
@@ -13,18 +14,22 @@ function App() {
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('domain', domain);
+    formData.append('domain', domain || 'General'); // ✅ fallback
 
     try {
-      const response = await fetch("https://your-backend-url.onrender.com/api/upload", {
-        method: "POST",
-        body: formData
-      });
+      const response = await axios.post(
+        'https://supportive-renewal-production-2f61.up.railway.app/api/upload', // ✅ NEW RAILWAY URL
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      );
 
-      const result = await response.json();
-      console.log("Response:", result);
+      console.log("Response:", response.data);
 
-      setData(result);
+      setData(response.data);
 
     } catch (err) {
       console.error("ERROR:", err);
