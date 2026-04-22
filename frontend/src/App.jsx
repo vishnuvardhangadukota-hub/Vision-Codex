@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UploadSection from './components/UploadSection';
 import Dashboard from './components/Dashboard';
-import axios from 'axios'; // ✅ IMPORTANT
+import axios from 'axios';
 
 function App() {
   const [data, setData] = useState(null);
@@ -14,11 +14,11 @@ function App() {
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('domain', domain || 'General'); // ✅ fallback
+    formData.append('domain', domain || 'General');
 
     try {
       const response = await axios.post(
-        'https://supportive-renewal-production-0bf1.up.railway.app/api/upload', // ✅ FIXED URL
+        'https://vision-codex-1.onrender.com/api/upload', // ✅ FIXED HERE
         formData,
         {
           headers: {
@@ -28,7 +28,6 @@ function App() {
       );
 
       console.log("Response:", response.data);
-
       setData(response.data);
 
     } catch (err) {
