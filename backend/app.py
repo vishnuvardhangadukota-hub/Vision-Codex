@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from bias_detector import analyze_dataset
+from backend.bias_detector import analyze_dataset
 
 app = Flask(__name__)
 
