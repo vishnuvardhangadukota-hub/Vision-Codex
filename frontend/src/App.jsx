@@ -18,7 +18,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        'https://supportive-renewal-production-2f61.up.railway.app/api/upload', // ✅ NEW RAILWAY URL
+        'https://supportive-renewal-production-0bf1.up.railway.app/api/upload', // ✅ FIXED URL
         formData,
         {
           headers: {

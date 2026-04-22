@@ -55,7 +55,6 @@ def upload_file():
         # 🔥 Run AI analysis
         analysis_data = analyze_dataset(file, domain)
 
-        # Response structure (clean + frontend ready)
         return jsonify({
             "success": True,
             "message": "Dataset analyzed successfully 🚀",
@@ -88,11 +87,10 @@ def status():
 
 
 # -------------------------------
-# 🚀 RUN SERVER
+# 🚀 RUN SERVER (FIXED)
 # -------------------------------
 if __name__ == "__main__":
     app.run(
-        debug=True,
         host="0.0.0.0",
-        port=5000
+        port=int(os.environ.get("PORT", 8080))
     )
